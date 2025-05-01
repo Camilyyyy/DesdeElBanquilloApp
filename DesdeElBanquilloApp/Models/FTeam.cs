@@ -13,8 +13,8 @@ namespace DesdeElBanquilloApp.Models
         //list
         public ICollection<Player> PlayersFteam { get; set; }
         public ICollection<Competition> CompetitionFteam { get; set; }
-        public ICollection<Match> MatchesFteam { get; set; }
-
+        public ICollection<Match> HomeMatches { get; set; }
+        public ICollection<Match> AwayMatches { get; set; }
 
     }
 }
