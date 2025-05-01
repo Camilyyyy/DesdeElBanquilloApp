@@ -11,6 +11,7 @@ namespace DesdeElBanquilloApp.Models
         public int IdPlayer { get; set; }
 
         [Required]
+        [DisplayName("Numero de Jugador")]
         public int PlayerNumber { get; set; }
 
         [Required]

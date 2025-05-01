@@ -1,4 +1,5 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using System.ComponentModel;
+using System.ComponentModel.DataAnnotations;
 
 namespace DesdeElBanquilloApp.Models
 {
@@ -8,6 +9,7 @@ namespace DesdeElBanquilloApp.Models
         public int IdFTeam { get; set; }
         [Required]
         [StringLength(50)]
+        [DisplayName("Nombre Equipo Futbol")]
         public string Name { get; set; }
 
         //list
