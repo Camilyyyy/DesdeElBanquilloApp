@@ -18,36 +18,48 @@ using DesdeElBanquilloApp.Models;
     {
         base.OnModelCreating(modelBuilder);
 
-        // Configura la relación para partidos locales
-        modelBuilder.Entity<Match>()
-            .HasOne(m => m.HomeTeam)
-            .WithMany(t => t.HomeMatches)
-            .HasForeignKey(m => m.HomeTeamId)
-            .OnDelete(DeleteBehavior.Restrict);
+       // Configura la relación para partidos locales
+modelBuilder.Entity<Match>()
+.HasOne(m => m.HomeTeam)
+.WithMany(t => t.HomeMatches)
+.HasForeignKey(m => m.HomeTeamId)
+.OnDelete(DeleteBehavior.Restrict);
 
         // Configura la relación para partidos visitantes
         modelBuilder.Entity<Match>()
-            .HasOne(m => m.AwayTeam)
-            .WithMany(t => t.AwayMatches)
-            .HasForeignKey(m => m.AwayTeamId)
-            .OnDelete(DeleteBehavior.Restrict);
+        .HasOne(m => m.AwayTeam)
+        .WithMany(t => t.AwayMatches)
+        .HasForeignKey(m => m.AwayTeamId)
+        .OnDelete(DeleteBehavior.Restrict);
 
         // Otras configuraciones...
 
+        // Configura MatchPlayer con clave primaria Id
         modelBuilder.Entity<MatchPlayer>()
-        .HasKey(mp => new { mp.MatchId, mp.PlayerId });
+        .HasKey(mp => mp.Id);
 
-        // Configura la relación con Match
+        // Define un índice único para MatchId y PlayerId
         modelBuilder.Entity<MatchPlayer>()
-            .HasOne(mp => mp.Match)
-            .WithMany(m => m.MatchPlayers)
-            .HasForeignKey(mp => mp.MatchId);
+        .HasIndex(mp => new { mp.MatchId, mp.PlayerId })
+        .IsUnique();
 
-        // Configura la relación con Player
         modelBuilder.Entity<MatchPlayer>()
-            .HasOne(mp => mp.Player)
-            .WithMany() // Aquí deberías especificar la colección en Player si existe
-            .HasForeignKey(mp => mp.PlayerId);
+        .HasOne(mp => mp.Match)
+        .WithMany(m => m.MatchPlayers)
+        .HasForeignKey(mp => mp.MatchId)
+        .OnDelete(DeleteBehavior.Restrict); // Solo una cascada
+
+        modelBuilder.Entity<MatchPlayer>()
+        .HasOne(mp => mp.Player)
+        .WithMany(p => p.MatchPlayers)
+        .HasForeignKey(mp => mp.PlayerId)
+        .OnDelete(DeleteBehavior.Restrict); // O NoAction
+
+        modelBuilder.Entity<MatchPlayer>()
+        .HasOne(mp => mp.Position)
+        .WithMany(pos => pos.MatchPlayers)
+        .HasForeignKey(mp => mp.PositionId)
+        .OnDelete(DeleteBehavior.Restrict); // O NoAction
     }
 
 public DbSet<DesdeElBanquilloApp.Models.Competition> Competition { get; set; } = default!;

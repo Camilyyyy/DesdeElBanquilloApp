@@ -27,12 +27,12 @@ namespace DesdeElBanquilloApp.Models
         public DateOnly CompetitionEndDate { get; set; }
 
         //FK
-        [ForeignKey("Position")]
+        [ForeignKey("idFederation")]
         public int idFederation { get; set; }
         public Federation? Federation { get; set; }
 
         //List
         public ICollection<Match> CompetitionMatches { get; set; }
-
+        public ICollection<FTeam> CompetitionTeams { get; set; }
     }
 }

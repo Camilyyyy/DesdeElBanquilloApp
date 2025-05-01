@@ -12,5 +12,7 @@ namespace DesdeElBanquilloApp.Models
         [StringLength(50)]
         [DisplayName("Nombre Posicion")]
         public string PositionName { get; set; }
+
+        public ICollection<MatchPlayer> MatchPlayers { get; set; } = new List<MatchPlayer>();
     }
 }
