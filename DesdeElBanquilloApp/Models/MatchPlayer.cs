@@ -4,6 +4,8 @@ namespace DesdeElBanquilloApp.Models
 {
     public class MatchPlayer
     {
+        [Key]
+        public int Id { get; set; }
         [Required]
         public int MatchId { get; set; }
 

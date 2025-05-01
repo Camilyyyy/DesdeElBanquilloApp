@@ -23,12 +23,12 @@ namespace DesdeElBanquilloApp.Models
         public int AwayScore { get; set; }
 
         //FK
-        [ForeignKey("HomeTeam")]
+        [ForeignKey("HomeTeamId")]
         public FTeam? HomeTeam { get; set; }
         [Required]
         public int HomeTeamId { get; set; }
        
-        [ForeignKey("AwayTeam")]
+        [ForeignKey("AwayTeamId")]
         public FTeam? AwayTeam { get; set; }
         [Required]
         public int AwayTeamId { get; set; }

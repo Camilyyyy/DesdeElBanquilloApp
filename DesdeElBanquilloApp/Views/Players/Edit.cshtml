@@ -1,0 +1,64 @@
+﻿@model DesdeElBanquilloApp.Models.Player
+
+@{
+    ViewData["Title"] = "Edit";
+}
+
+<h1>Edit</h1>
+
+<h4>Player</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Edit">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="IdPlayer" />
+            <div class="form-group">
+                <label asp-for="PlayerNumber" class="control-label"></label>
+                <input asp-for="PlayerNumber" class="form-control" />
+                <span asp-validation-for="PlayerNumber" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Name" class="control-label"></label>
+                <input asp-for="Name" class="form-control" />
+                <span asp-validation-for="Name" class="text-danger"></span>
+            </div>
+            <div class="form-group form-check">
+                <label class="form-check-label">
+                    <input class="form-check-input" asp-for="isActive" /> @Html.DisplayNameFor(model => model.isActive)
+                </label>
+            </div>
+            <div class="form-group">
+                <label asp-for="Age" class="control-label"></label>
+                <input asp-for="Age" class="form-control" />
+                <span asp-validation-for="Age" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="idCountry" class="control-label"></label>
+                <select asp-for="idCountry" class="form-control" asp-items="ViewBag.idCountry"></select>
+                <span asp-validation-for="idCountry" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="idTeam" class="control-label"></label>
+                <select asp-for="idTeam" class="form-control" asp-items="ViewBag.idTeam"></select>
+                <span asp-validation-for="idTeam" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="idPosition" class="control-label"></label>
+                <select asp-for="idPosition" class="form-control" asp-items="ViewBag.idPosition"></select>
+                <span asp-validation-for="idPosition" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Save" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}
