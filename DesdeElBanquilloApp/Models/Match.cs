@@ -33,9 +33,10 @@ namespace DesdeElBanquilloApp.Models
         [Required]
         public int AwayTeamId { get; set; }
 
+        //Lists
 
-     
+        public ICollection<MatchPlayer> MatchPlayers { get; set; } = new List<MatchPlayer>();
 
-        //list
+
     }
 }

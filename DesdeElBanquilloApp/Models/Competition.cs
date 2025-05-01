@@ -32,9 +32,7 @@ namespace DesdeElBanquilloApp.Models
         public Federation? Federation { get; set; }
 
         //List
-
-        public required List<Match> GetMatchesCompetition;
-        public required List<FTeam> GetFteamsCompetition;
+        public ICollection<Match> CompetitionMatches { get; set; }
 
     }
 }

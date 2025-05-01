@@ -14,6 +14,9 @@ namespace DesdeElBanquilloApp.Models
         public string Name { get; set; }
 
         //lists
-        public required List<Country> GetCountriesFederation ;
+        public ICollection<Country> CountriesFederation { get; set; }
+        public ICollection<Competition> CompetitionsFederation { get; set; }
+
+
     }
 }

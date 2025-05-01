@@ -37,5 +37,8 @@ namespace DesdeElBanquilloApp.Models
         [ForeignKey("Position")]
         public int idPosition { get; set; }
         public Position? Position { get; set; }
+
+        public ICollection<MatchPlayer> MatchPlayers { get; set; } = new List<MatchPlayer>();
+
     }
 }

@@ -21,7 +21,9 @@ namespace DesdeElBanquilloApp.Models
         public Federation? Federation { get; set; }
 
         //Lists
+        public ICollection<FTeam> FTeamsCountry { get; set; }
 
-        public required List<FTeam> GetFTeamsCountry;
+        public ICollection<Player> PlayersCountry { get; set; }
+
     }
 }

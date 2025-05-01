@@ -11,7 +11,10 @@ namespace DesdeElBanquilloApp.Models
         public string Name { get; set; }
 
         //list
-        public required List<Player> GetPlayersFteam;
+        public ICollection<Player> PlayersFteam { get; set; }
+        public ICollection<Competition> CompetitionFteam { get; set; }
+        public ICollection<Match> MatchesFteam { get; set; }
+
 
     }
 }
